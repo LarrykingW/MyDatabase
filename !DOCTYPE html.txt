@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire de Contact</title>
+    <style>
+        /* styles.css */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        #confirmation-message {
+            color: #28a745;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Style pour l'icône du drapeau du Sénégal */
+        .flag-icon {
+            width: 25px;
+            height: 15px;
+            background-color: #fcd116; /* Jaune */
+            border: 2px solid #008e2a; /* Vert */
+            position: relative;
+            border-radius: 5px;
+        }
+
+        .flag-icon::before {
+            content: "";
+            position: absolute;
+            top: 2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 4px;
+            background-color: #007a5d; /* Étoile verte */
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Formulaire de Contact</h1>
+        <form id="contact-form" action="https://formspree.io/f/your-email" method="POST">
+            <div class="form-group">
+                <label for="name">Nom</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            <div class="form-group">
+                <div class="form-inline">
+                    <div class="flag-icon"></div> <!-- Drapeau du Sénégal -->
+                    <button type="submit" id="submit-btn">Envoyer</button>
+                </div>
+            </div>
+            <p id="confirmation-message" style="display: none;">Votre message a bien été envoyé. Merci !</p>
+        </form>
+    </div>
+
+    <script>
+        // script.js
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault(); // Empêche l'envoi par défaut pour afficher un message personnalisé
+
+            // Récupérer les valeurs du formulaire
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            // Afficher un message de confirmation
+            document.getElementById('confirmation-message').style.display = 'block';
+
+            // Réinitialiser le formulaire
+            document.getElementById('contact-form').reset();
+        });
+    </script>
+
+</body>
+</html>
